@@ -1,6 +1,7 @@
 package com.karlo.recipeapp.domain;
 
 import com.karlo.recipeapp.domain.enums.Difficulty;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -127,6 +128,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
+    }
+
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Set<Ingredient> getIngredients() {
