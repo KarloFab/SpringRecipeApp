@@ -18,7 +18,7 @@ public class RecipeController {
     @RequestMapping({"/recipe/show/{id}"})
     public String getIndexPage(@PathVariable String id, Model model) {
 
-        model.addAttribute("recipes", recipeService.findById(new Long(id)));
+        model.addAttribute("recipe", recipeService.findById(new Long(id)));
 
         return "recipe/show";
     }
