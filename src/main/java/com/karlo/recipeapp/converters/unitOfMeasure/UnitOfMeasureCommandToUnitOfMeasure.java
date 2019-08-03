@@ -1,4 +1,4 @@
-package com.karlo.recipeapp.converters;
+package com.karlo.recipeapp.converters.unitOfMeasure;
 
 import com.karlo.recipeapp.commands.UnitOfMeasureCommand;
 import com.karlo.recipeapp.domain.UnitOfMeasure;
