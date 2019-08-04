@@ -22,7 +22,6 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
         this.notesConverter = notesConverter;
     }
 
-
     @Override
     public Recipe convert(RecipeCommand source) {
         if (source == null) {
