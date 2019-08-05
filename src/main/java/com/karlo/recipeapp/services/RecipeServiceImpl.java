@@ -59,8 +59,13 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    @Transient
+    @Transactional
     public RecipeCommand findCommandById(Long id) {
         return recipeToRecipeCommand.convert(findById(id));
+    }
+
+    @Override
+    public void deleteById(Long idToDelete) {
+        recipeRepository.deleteById(idToDelete);
     }
 }

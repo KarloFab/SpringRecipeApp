@@ -2,10 +2,12 @@ package com.karlo.recipeapp.controllers;
 
 import com.karlo.recipeapp.commands.RecipeCommand;
 import com.karlo.recipeapp.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Controller
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -45,4 +47,12 @@ public class RecipeController {
         return "redirect:/recipe/show/" + savedCommand.getId();
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable String id){
+        log.debug("Deleting id: " + id);
+
+        recipeService.deleteById(Long.valueOf(id));
+
+        return "redirect:/";
+    }
 }
