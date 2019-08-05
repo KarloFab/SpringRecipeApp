@@ -25,10 +25,10 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
-    @Autowired
+    @Mock
     RecipeToRecipeCommand recipeToRecipeCommand;
 
-    @Autowired
+    @Mock
     RecipeCommandToRecipe recipeCommandToRecipe;
 
     @Before

@@ -23,9 +23,9 @@ public class RecipeControllerTest {
     @Mock
     RecipeService recipeService;
 
-    RecipeController recipeController;
+    private RecipeController recipeController;
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
