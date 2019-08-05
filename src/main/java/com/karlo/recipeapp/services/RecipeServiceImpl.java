@@ -1,6 +1,8 @@
 package com.karlo.recipeapp.services;
 
 import com.karlo.recipeapp.commands.RecipeCommand;
+import com.karlo.recipeapp.converters.recipe.RecipeCommandToRecipe;
+import com.karlo.recipeapp.converters.recipe.RecipeToRecipeCommand;
 import com.karlo.recipeapp.domain.Recipe;
 import com.karlo.recipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +17,14 @@ import java.util.Set;
 public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
+    private final RecipeCommandToRecipe recipeCommandToRecipe;
+    private final RecipeToRecipeCommand recipeToRecipeCommand;
 
-
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository, RecipeCommandToRecipe recipeCommandToRecipe,
+                             RecipeToRecipeCommand recipeToRecipeCommand) {
         this.recipeRepository = recipeRepository;
+        this.recipeCommandToRecipe = recipeCommandToRecipe;
+        this.recipeToRecipeCommand = recipeToRecipeCommand;
     }
 
     @Override
@@ -42,8 +48,10 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public RecipeCommand saveRecipeCommand(RecipeCommand recipeCommand) {
-        Recipe detachedRecipe = null;
+        Recipe detachedRecipe = recipeCommandToRecipe.convert(recipeCommand);
 
-        return new RecipeCommand();
+        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
+        log.debug("Saved Recipe id:" + savedRecipe.getId());
+        return recipeToRecipeCommand.convert(savedRecipe);
     }
 }

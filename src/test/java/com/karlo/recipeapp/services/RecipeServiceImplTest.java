@@ -1,11 +1,15 @@
 package com.karlo.recipeapp.services;
 
+import com.karlo.recipeapp.commands.RecipeCommand;
+import com.karlo.recipeapp.converters.recipe.RecipeCommandToRecipe;
+import com.karlo.recipeapp.converters.recipe.RecipeToRecipeCommand;
 import com.karlo.recipeapp.domain.Recipe;
 import com.karlo.recipeapp.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
@@ -21,11 +25,17 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Autowired
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Autowired
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -58,5 +68,4 @@ public class RecipeServiceImplTest {
         verify(recipeRepository, times(1)).findAll();
         verify(recipeRepository, never()).findById(anyLong());
     }
-
 }
