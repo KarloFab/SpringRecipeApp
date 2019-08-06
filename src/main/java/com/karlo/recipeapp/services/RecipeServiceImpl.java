@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.beans.Transient;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -65,7 +64,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public void deleteById(Long idToDelete) {
-        recipeRepository.deleteById(idToDelete);
+    public void deleteById(Long id) {
+        recipeRepository.deleteById(id);
     }
 }
