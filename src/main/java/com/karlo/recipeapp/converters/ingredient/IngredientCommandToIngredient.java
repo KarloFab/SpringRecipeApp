@@ -1,7 +1,7 @@
 package com.karlo.recipeapp.converters.ingredient;
 
 import com.karlo.recipeapp.commands.IngredientCommand;
-import com.karlo.recipeapp.converters.unitOfMeasure.UnitOfMeasureCommandToUnitOfMeasure;
+import com.karlo.recipeapp.converters.unitofmeasure.UnitOfMeasureCommandToUnitOfMeasure;
 import com.karlo.recipeapp.domain.Ingredient;
 import com.karlo.recipeapp.domain.Recipe;
 import lombok.Synchronized;

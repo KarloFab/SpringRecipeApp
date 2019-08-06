@@ -4,7 +4,7 @@ import com.karlo.recipeapp.commands.RecipeCommand;
 import com.karlo.recipeapp.converters.category.CategoryToCategoryCommand;
 import com.karlo.recipeapp.converters.ingredient.IngredientToIngredientCommand;
 import com.karlo.recipeapp.converters.notes.NotesToNotesCommand;
-import com.karlo.recipeapp.converters.unitOfMeasure.UnitOfMeasureToUnitOfMeasureCommand;
+import com.karlo.recipeapp.converters.unitofmeasure.UnitOfMeasureToUnitOfMeasureCommand;
 import com.karlo.recipeapp.domain.Category;
 import com.karlo.recipeapp.domain.Ingredient;
 import com.karlo.recipeapp.domain.Notes;

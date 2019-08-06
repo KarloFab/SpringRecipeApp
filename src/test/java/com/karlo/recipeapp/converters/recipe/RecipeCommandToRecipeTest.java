@@ -7,7 +7,7 @@ import com.karlo.recipeapp.commands.RecipeCommand;
 import com.karlo.recipeapp.converters.category.CategoryCommandToCategory;
 import com.karlo.recipeapp.converters.ingredient.IngredientCommandToIngredient;
 import com.karlo.recipeapp.converters.notes.NotesCommandToNotes;
-import com.karlo.recipeapp.converters.unitOfMeasure.UnitOfMeasureCommandToUnitOfMeasure;
+import com.karlo.recipeapp.converters.unitofmeasure.UnitOfMeasureCommandToUnitOfMeasure;
 import com.karlo.recipeapp.domain.Recipe;
 import com.karlo.recipeapp.domain.enums.Difficulty;
 import org.junit.Before;
