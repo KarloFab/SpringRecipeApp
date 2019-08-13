@@ -19,10 +19,10 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         this.uomConverter = uomConverter;
     }
 
-    @Synchronized
     @Nullable
     @Override
     public Ingredient convert(IngredientCommand source) {
+
         if (source == null) {
             return null;
         }
