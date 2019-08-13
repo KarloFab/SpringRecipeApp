@@ -3,11 +3,13 @@ package com.karlo.recipeapp.services;
 import com.karlo.recipeapp.commands.UnitOfMeasureCommand;
 import com.karlo.recipeapp.converters.unitofmeasure.UnitOfMeasureToUnitOfMeasureCommand;
 import com.karlo.recipeapp.repositories.UnitOfMeasureRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Service
 public class UnitOfMeasureServiceImpl implements UnitOfMeasureService{
 
     private final UnitOfMeasureRepository unitOfMeasureRepository;
