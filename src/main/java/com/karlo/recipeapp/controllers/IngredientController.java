@@ -26,8 +26,8 @@ public class IngredientController {
         this.unitOfMeasureService = unitOfMeasureService;
     }
 
-    @GetMapping
-    @RequestMapping("/recipe/{recipeId}/ingredients")
+
+    @GetMapping("/recipe/{recipeId}/ingredients")
     public String listIngredients(@PathVariable String recipeId, Model model){
         log.debug("Getting ingredients list for recipe with id: " + recipeId);
 
@@ -43,8 +43,7 @@ public class IngredientController {
         return "recipe/ingredient/show";
     }
 
-    @GetMapping
-    @RequestMapping("/recipe/{recipeId}/ingredient/{id}")
+    @GetMapping("/recipe/{recipeId}/ingredient/{id}")
     public String listIngredient(@PathVariable String recipeId,
                                   @PathVariable String id ,Model model){
 
