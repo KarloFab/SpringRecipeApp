@@ -59,7 +59,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void testShowIngredient() throws Exception{
+    public void testShowIngredient() throws Exception {
         //given
         IngredientCommand ingredientCommand = new IngredientCommand();
 
@@ -96,7 +96,7 @@ public class IngredientControllerTest {
         IngredientCommand ingredientCommand = new IngredientCommand();
 
         //when
-        when(ingredientService.findCommandByRecipeIdAndIngredientId(anyLong(),anyLong())).thenReturn(ingredientCommand);
+        when(ingredientService.findCommandByRecipeIdAndIngredientId(anyLong(), anyLong())).thenReturn(ingredientCommand);
         when(unitOfMeasureService.findAll()).thenReturn(new HashSet<>());
 
         //then
@@ -105,5 +105,11 @@ public class IngredientControllerTest {
                 .andExpect(view().name("recipe/ingredient/ingredientform"))
                 .andExpect(model().attributeExists("ingredient"))
                 .andExpect(model().attributeExists("uomList"));
+    }
+
+    @Test
+    public void testDeleteIngredient() throws Exception {
+        mockMvc.perform(get("/recipe/2/ingredient/3/delete"))
+                .andExpect(view().name("redirect:/recipe/2/ingredients"));
     }
 }
