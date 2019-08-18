@@ -4,6 +4,7 @@ import com.karlo.recipeapp.commands.RecipeCommand;
 import com.karlo.recipeapp.converters.recipe.RecipeCommandToRecipe;
 import com.karlo.recipeapp.converters.recipe.RecipeToRecipeCommand;
 import com.karlo.recipeapp.domain.Recipe;
+import com.karlo.recipeapp.exceptions.NotFoundException;
 import com.karlo.recipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if(!recipeOptional.isPresent()){
-            throw new RuntimeException("Recipe not found");
+            throw new NotFoundException("Recipe not found");
         }
 
         return recipeOptional.get();

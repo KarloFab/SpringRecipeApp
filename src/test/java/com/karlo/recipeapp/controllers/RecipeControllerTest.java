@@ -2,6 +2,8 @@ package com.karlo.recipeapp.controllers;
 
 import com.karlo.recipeapp.commands.RecipeCommand;
 import com.karlo.recipeapp.domain.Recipe;
+import com.karlo.recipeapp.exceptions.NotFoundException;
+import com.karlo.recipeapp.repositories.RecipeRepository;
 import com.karlo.recipeapp.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +12,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -24,6 +28,9 @@ public class RecipeControllerTest {
 
     @Mock
     RecipeService recipeService;
+
+    @Mock
+    RecipeRepository recipeRepository;
 
     private RecipeController recipeController;
 
@@ -53,6 +60,17 @@ public class RecipeControllerTest {
     }
 
     @Test
+    public void testGetRecipeNotFound() throws Exception {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/1/show"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     public void testGetNewRecipeForm() throws Exception {
         mockMvc.perform(get("/recipe/new"))
                 .andExpect(status().isOk())
@@ -74,7 +92,7 @@ public class RecipeControllerTest {
                 .param("directions", "directions"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/recipe/1/show"));
-}
+    }
 
     @Test
     public void testDeleteRecipe() throws Exception {
