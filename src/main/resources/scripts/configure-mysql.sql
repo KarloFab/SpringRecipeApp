@@ -8,3 +8,4 @@ CREATE DATABASE sfg_prod;
 
 #Create database service accounts
 CREATE USER 'sfg_dev_user'
+CREATE USER 'sfg_prod_user'
